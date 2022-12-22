@@ -4,12 +4,15 @@ class NewsContainer extends StatelessWidget {
   final String imgUrl;
   final String newsHead;
   final String newsDesc;
+  final String newsCnt;
   final String newsUrl;
+
   const NewsContainer({
     super.key,
     required this.imgUrl,
     required this.newsHead,
     required this.newsDesc,
+    required this.newsCnt,
     required this.newsUrl,
   });
 
@@ -47,6 +50,16 @@ class NewsContainer extends StatelessWidget {
                 ),
                 Text(
                   newsDesc,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: Colors.black38,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  newsCnt,
                   style: const TextStyle(
                     fontSize: 16,
                   ),
