@@ -77,7 +77,7 @@ class NewsContainer extends StatelessWidget {
                   onPressed: (() {
                     print("Going to $newsUrl");
                   }),
-                  child: const Text('Read more...'),
+                  child: const Text('Read more'),
                 ),
               ),
             ],
