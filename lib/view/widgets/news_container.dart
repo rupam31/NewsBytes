@@ -25,11 +25,12 @@ class NewsContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
-            imgUrl,
+          FadeInImage.assetNetwork(
             height: 400,
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
+            placeholder: "assets/img/placeholder.jfif",
+            image: imgUrl,
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -37,19 +38,19 @@ class NewsContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 15,
+                  height: 30,
                 ),
                 Text(
-                  newsHead.length > 70
-                      ? "${newsHead.substring(0, 50)}..."
+                  newsHead.length > 90
+                      ? "${newsHead.substring(0, 90)}..."
                       : newsHead,
                   style: const TextStyle(
-                    fontSize: 30,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 30,
                 ),
                 Text(
                   newsDesc,
@@ -59,12 +60,14 @@ class NewsContainer extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 30,
                 ),
                 Text(
-                  newsCnt.length > 300
-                      ? newsCnt.substring(0, 300)
-                      : "${newsCnt.toString().substring(0, newsCnt.length - 15)}...",
+                  newsCnt != "--"
+                      ? newsCnt.length > 300
+                          ? newsCnt.substring(0, 300)
+                          : "${newsCnt.toString().substring(0, newsCnt.length - 15)}..."
+                      : newsCnt,
                   style: const TextStyle(
                     fontSize: 16,
                   ),

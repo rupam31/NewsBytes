@@ -12,11 +12,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isLoading = true;
   late NewsArt newsArt;
 
   getNews() async {
     newsArt = await FetchNews.fetchNews();
-    setState(() {});
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -32,16 +35,23 @@ class _HomeScreenState extends State<HomeScreen> {
           controller: PageController(initialPage: 0),
           scrollDirection: Axis.vertical,
           onPageChanged: (value) {
+            setState(() {
+              isLoading = true;
+            });
             getNews();
           },
           itemBuilder: (context, index) {
-            return NewsContainer(
-              imgUrl: newsArt.imgUrl,
-              newsHead: newsArt.newsHead,
-              newsCnt: newsArt.newsCnt,
-              newsDesc: newsArt.newsDesc,
-              newsUrl: newsArt.newsUrl,
-            );
+            return isLoading
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : NewsContainer(
+                    imgUrl: newsArt.imgUrl,
+                    newsHead: newsArt.newsHead,
+                    newsCnt: newsArt.newsCnt,
+                    newsDesc: newsArt.newsDesc,
+                    newsUrl: newsArt.newsUrl,
+                  );
           }),
     );
   }
