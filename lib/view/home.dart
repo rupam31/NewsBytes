@@ -31,18 +31,15 @@ class _HomeScreenState extends State<HomeScreen> {
       body: PageView.builder(
           controller: PageController(initialPage: 0),
           scrollDirection: Axis.vertical,
-          itemCount: 10,
-          itemBuilder: (context, index) {
+          onPageChanged: (value) {
             getNews();
-
+          },
+          itemBuilder: (context, index) {
             return NewsContainer(
-              imgUrl:
-                  newsArt.imgUrl,
+              imgUrl: newsArt.imgUrl,
               newsHead: newsArt.newsHead,
-              newsCnt:
-                  newsArt.newsCnt,
-              newsDesc:
-                  newsArt.newsDesc,
+              newsCnt: newsArt.newsCnt,
+              newsDesc: newsArt.newsDesc,
               newsUrl: newsArt.newsUrl,
             );
           }),

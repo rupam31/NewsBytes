@@ -39,7 +39,9 @@ class NewsContainer extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                  newsHead,
+                  newsHead.length > 70
+                      ? "${newsHead.substring(0, 50)}..."
+                      : newsHead,
                   style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
@@ -59,7 +61,9 @@ class NewsContainer extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  newsCnt,
+                  newsCnt.length > 300
+                      ? newsCnt.substring(0, 300)
+                      : "${newsCnt.toString().substring(0, newsCnt.length - 15)}...",
                   style: const TextStyle(
                     fontSize: 16,
                   ),
