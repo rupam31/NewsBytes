@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/view/detail_view.dart';
 
 class NewsContainer extends StatelessWidget {
   final String imgUrl;
@@ -18,7 +19,7 @@ class NewsContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: Column(
@@ -78,9 +79,15 @@ class NewsContainer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: ElevatedButton(
-                  onPressed: (() {
-                    print("Going to $newsUrl");
-                  }),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            DetailViewScreen(newsUrl: newsUrl),
+                      ),
+                    );
+                  },
                   child: const Text('Read more'),
                 ),
               ),

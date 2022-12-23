@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:http/http.dart';
-import 'package:news_app/view/model/news_article.dart';
+import 'package:news_app/controller/model/news_article.dart';
 
 class FetchNews {
   static List sourcesId = [
